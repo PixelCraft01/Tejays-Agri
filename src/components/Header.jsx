@@ -212,8 +212,11 @@ export default function Header({ theme, setTheme }) {
                 items-center
               "
             >
-              <img
-                src={assetPath('/logo/Tejays_logo.png')}
+              <img src={assetPath(
+                isDark
+                  ? '/logo/Tejays_logo_dark.png'
+                  : '/logo/Tejays_logo.png'
+              )}
                 alt="Tejays Agri"
                 className="
                   h-[44px]
@@ -338,7 +341,7 @@ export default function Header({ theme, setTheme }) {
                 ALWAYS VISIBLE
                 MOBILE + TABLET + DESKTOP */}
 
-               <ThemeToggle isDark={isDark} themeLabel={themeLabel} onToggle={toggleTheme} />
+            <ThemeToggle isDark={isDark} themeLabel={themeLabel} onToggle={toggleTheme} />
 
             {/* Hamburger
                 MOBILE + TABLET ONLY */}
@@ -440,10 +443,9 @@ export default function Header({ theme, setTheme }) {
                   tracking-[0.16em]
                   transition-colors
                   duration-300
-                  ${
-                    isActive
-                      ? 'text-[#075B3A] dark:text-[#72B943]'
-                      : 'text-[#17352A]/75 hover:text-[#075B3A] dark:text-white/75 dark:hover:text-[#72B943]'
+                  ${isActive
+                    ? 'text-[#075B3A] dark:text-[#72B943]'
+                    : 'text-[#17352A]/75 hover:text-[#075B3A] dark:text-white/75 dark:hover:text-[#72B943]'
                   }
                 `}
               >
@@ -460,10 +462,9 @@ export default function Header({ theme, setTheme }) {
                         bg-[#72B943]
                         transition-[width]
                         duration-300
-                        ${
-                          isActive
-                            ? 'w-full'
-                            : 'w-0 group-hover:w-full'
+                        ${isActive
+                          ? 'w-full'
+                          : 'w-0 group-hover:w-full'
                         }
                       `}
                     />
@@ -517,10 +518,9 @@ export default function Header({ theme, setTheme }) {
               dark:bg-[#07100D]
               dark:text-white
               sm:top-[80px]
-              ${
-                isClosing
-                  ? 'mobile-menu-out'
-                  : 'mobile-menu-in'
+              ${isClosing
+                ? 'mobile-menu-out'
+                : 'mobile-menu-in'
               }
             `}
           >
@@ -607,10 +607,9 @@ export default function Header({ theme, setTheme }) {
                       sm:min-h-[66px]
                       sm:text-[20px]
                       dark:border-white/10
-                      ${
-                        isActive
-                          ? 'text-[#075B3A] dark:text-[#72B943]'
-                          : 'text-[#17352A] hover:text-[#075B3A] dark:text-white dark:hover:text-[#72B943]'
+                      ${isActive
+                        ? 'text-[#075B3A] dark:text-[#72B943]'
+                        : 'text-[#17352A] hover:text-[#075B3A] dark:text-white dark:hover:text-[#72B943]'
                       }
                     `}
                   >
@@ -622,10 +621,9 @@ export default function Header({ theme, setTheme }) {
                               text-[8px]
                               font-bold
                               tracking-[0.15em]
-                              ${
-                                isActive
-                                  ? 'text-[#72B943]'
-                                  : 'text-[#17352A]/30 dark:text-white/25'
+                              ${isActive
+                                ? 'text-[#72B943]'
+                                : 'text-[#17352A]/30 dark:text-white/25'
                               }
                             `}
                           >
@@ -648,10 +646,9 @@ export default function Header({ theme, setTheme }) {
                             bg-[#72B943]
                             transition-opacity
                             duration-200
-                            ${
-                              isActive
-                                ? 'opacity-100'
-                                : 'opacity-0 group-hover:opacity-100'
+                            ${isActive
+                              ? 'opacity-100'
+                              : 'opacity-0 group-hover:opacity-100'
                             }
                           `}
                         />
