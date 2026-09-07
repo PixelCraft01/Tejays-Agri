@@ -16,6 +16,10 @@ const marqueeItems = [
   'CIRCULAR SUSTAINABILITY',
 ]
 
+/* =========================================================
+   THEME TOGGLE
+========================================================= */
+
 function ThemeToggle({ isDark, themeLabel, onToggle }) {
   return (
     <button
@@ -24,19 +28,86 @@ function ThemeToggle({ isDark, themeLabel, onToggle }) {
       aria-label={themeLabel}
       aria-pressed={isDark}
       title={themeLabel}
-      className="relative inline-flex h-[34px] w-[58px] shrink-0 items-center rounded-full border border-[#075B3A]/15 bg-white/90 p-1 shadow-[0_5px_18px_rgba(7,91,58,0.08)] backdrop-blur-sm transition-all duration-300 hover:border-[#72B943] dark:border-white/10 dark:bg-[#102019]"
+      className="
+        relative
+        inline-flex
+        h-[34px]
+        w-[58px]
+        shrink-0
+        items-center
+        rounded-full
+        border
+        border-[#075B3A]/15
+        bg-[#075B3A]
+        p-1
+        shadow-[0_5px_18px_rgba(7,91,58,0.08)]
+        backdrop-blur-sm
+        transition-all
+        duration-300
+        hover:border-[#72B943]
+        dark:border-white/10
+        dark:bg-[#102019]
+      "
     >
-      <span className="pointer-events-none absolute inset-0 flex items-center justify-between px-[7px] text-[13px] text-[#075B3A]/50 dark:text-white/45">
+      {/* Background icons */}
+
+      <span
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          flex
+          items-center
+          justify-between
+          px-[7px]
+          text-[13px]
+          text-white
+        "
+      >
         <FiSun aria-hidden="true" />
         <FiMoon aria-hidden="true" />
       </span>
-      <span className={`relative z-10 flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#eaf3eb] text-[#075B3A] shadow-[0_2px_8px_rgba(0,0,0,0.10)] transition-transform duration-300 ease-out dark:bg-[#1b3528] dark:text-[#dff5ea] ${isDark ? 'translate-x-[22px]' : 'translate-x-0'}`}>
-        {isDark ? <FiMoon size={14} aria-hidden="true" /> : <FiSun size={14} aria-hidden="true" />}
+
+      {/* Sliding active icon */}
+
+      <span
+        className={`
+          relative
+          z-10
+          flex
+          h-[26px]
+          w-[26px]
+          items-center
+          justify-center
+          rounded-full
+          bg-[#eaf3eb]
+          text-[#075B3A]
+          shadow-[0_2px_8px_rgba(0,0,0,0.10)]
+          transition-transform
+          duration-300
+          ease-out
+          dark:bg-[#1b3528]
+          dark:text-[#dff5ea]
+          ${isDark ? 'translate-x-[22px]' : 'translate-x-0'}
+        `}
+      >
+        {isDark ? (
+          <FiMoon size={14} aria-hidden="true" />
+        ) : (
+          <FiSun size={14} aria-hidden="true" />
+        )}
       </span>
-      <span className="sr-only">{themeLabel}</span>
+
+      <span className="sr-only">
+        {themeLabel}
+      </span>
     </button>
   )
 }
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 export default function Header({ theme, setTheme }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -46,9 +117,9 @@ export default function Header({ theme, setTheme }) {
 
   const isDark = theme === 'dark'
 
-  /* =========================================================
+  /* =======================================================
      CLOSE MENU
-  ========================================================= */
+  ======================================================= */
 
   const closeMenu = useCallback(() => {
     if (!isMobileMenuOpen) return
@@ -65,9 +136,9 @@ export default function Header({ theme, setTheme }) {
     }, 180)
   }, [isMobileMenuOpen])
 
-  /* =========================================================
+  /* =======================================================
      TOGGLE MENU
-  ========================================================= */
+  ======================================================= */
 
   const toggleMenu = () => {
     if (isMobileMenuOpen) {
@@ -83,9 +154,9 @@ export default function Header({ theme, setTheme }) {
     setIsMobileMenuOpen(true)
   }
 
-  /* =========================================================
+  /* =======================================================
      BODY SCROLL LOCK
-  ========================================================= */
+  ======================================================= */
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -103,9 +174,9 @@ export default function Header({ theme, setTheme }) {
     }
   }, [isMobileMenuOpen])
 
-  /* =========================================================
-     ESC KEY + RESPONSIVE RESET
-  ========================================================= */
+  /* =======================================================
+     ESC + RESPONSIVE RESET
+  ======================================================= */
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -126,18 +197,32 @@ export default function Header({ theme, setTheme }) {
       }
     }
 
-    document.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('resize', handleResize)
+    document.addEventListener(
+      'keydown',
+      handleKeyDown,
+    )
+
+    window.addEventListener(
+      'resize',
+      handleResize,
+    )
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('resize', handleResize)
+      document.removeEventListener(
+        'keydown',
+        handleKeyDown,
+      )
+
+      window.removeEventListener(
+        'resize',
+        handleResize,
+      )
     }
   }, [closeMenu, isMobileMenuOpen])
 
-  /* =========================================================
+  /* =======================================================
      THEME
-  ========================================================= */
+  ======================================================= */
 
   const toggleTheme = () => {
     setTheme((current) =>
@@ -153,14 +238,16 @@ export default function Header({ theme, setTheme }) {
     <>
       {/* =====================================================
           MAIN HEADER
+          FIXED SO IT NEVER DISAPPEARS
       ===================================================== */}
 
       <header
         className="
           site-header
-          sticky
+          fixed
+          inset-x-0
           top-0
-          z-[9999]
+          z-[10000]
           w-full
           border-b
           border-black/5
@@ -212,11 +299,8 @@ export default function Header({ theme, setTheme }) {
                 items-center
               "
             >
-              <img src={assetPath(
-                isDark
-                  ? '/logo/Tejays_logo_dark.png'
-                  : '/logo/Tejays_logo.png'
-              )}
+              <img
+                src={assetPath('/logo/Tejays_logo.png')}
                 alt="Tejays Agri"
                 className="
                   h-[44px]
@@ -247,6 +331,7 @@ export default function Header({ theme, setTheme }) {
           >
             <div
               className="
+                marquee-shell
                 w-[420px]
                 overflow-hidden
                 rounded-full
@@ -301,7 +386,8 @@ export default function Header({ theme, setTheme }) {
           </div>
 
           {/* =================================================
-              RIGHT — CTA + THEME + MENU
+              RIGHT
+              CTA + THEME + MENU
           ================================================= */}
 
           <div
@@ -337,14 +423,15 @@ export default function Header({ theme, setTheme }) {
               Start a conversation
             </Link>
 
-            {/* Theme Toggle
-                ALWAYS VISIBLE
-                MOBILE + TABLET + DESKTOP */}
+            {/* Theme Toggle */}
 
-            <ThemeToggle isDark={isDark} themeLabel={themeLabel} onToggle={toggleTheme} />
+            <ThemeToggle
+              isDark={isDark}
+              themeLabel={themeLabel}
+              onToggle={toggleTheme}
+            />
 
-            {/* Hamburger
-                MOBILE + TABLET ONLY */}
+            {/* Hamburger */}
 
             <button
               type="button"
@@ -420,7 +507,7 @@ export default function Header({ theme, setTheme }) {
               max-w-[1400px]
               items-center
               justify-center
-              gap-x-6
+              gap-x-10
               px-4
               py-3
               sm:px-6
@@ -443,6 +530,7 @@ export default function Header({ theme, setTheme }) {
                   tracking-[0.16em]
                   transition-colors
                   duration-300
+
                   ${isActive
                     ? 'text-[#075B3A] dark:text-[#72B943]'
                     : 'text-[#17352A]/75 hover:text-[#075B3A] dark:text-white/75 dark:hover:text-[#72B943]'
@@ -462,6 +550,7 @@ export default function Header({ theme, setTheme }) {
                         bg-[#72B943]
                         transition-[width]
                         duration-300
+
                         ${isActive
                           ? 'w-full'
                           : 'w-0 group-hover:w-full'
@@ -478,12 +567,15 @@ export default function Header({ theme, setTheme }) {
 
       {/* =====================================================
           MOBILE / TABLET MENU
-          OUTSIDE HEADER
+          HEADER KE NEECHE OPEN HOGA
       ===================================================== */}
 
       {isMobileMenuOpen && (
         <>
-          {/* Backdrop */}
+          {/* =================================================
+              BACKDROP
+              BELOW MENU + HEADER
+          ================================================= */}
 
           <div
             className="
@@ -498,7 +590,10 @@ export default function Header({ theme, setTheme }) {
             aria-hidden="true"
           />
 
-          {/* Menu */}
+          {/* =================================================
+              MOBILE MENU
+              BELOW HEADER
+          ================================================= */}
 
           <div
             id="mobile-navigation"
@@ -507,17 +602,26 @@ export default function Header({ theme, setTheme }) {
               left-0
               right-0
               bottom-0
+
               top-[72px]
+
               z-[9998]
+
               overflow-y-auto
               overscroll-contain
+
               bg-[#F7F9F5]
               text-[#17352A]
+
               shadow-[0_20px_60px_rgba(7,91,58,0.12)]
+
               lg:hidden
+
               dark:bg-[#07100D]
               dark:text-white
+
               sm:top-[80px]
+
               ${isClosing
                 ? 'mobile-menu-out'
                 : 'mobile-menu-in'
@@ -539,44 +643,7 @@ export default function Header({ theme, setTheme }) {
               {/* =================================================
                   MENU HEADER
               ================================================= */}
-
-              <div
-                className="
-                  flex
-                  items-center
-                  justify-between
-                  border-b
-                  border-black/5
-                  py-5
-                  dark:border-white/10
-                "
-              >
-                <span
-                  className="
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.24em]
-                    text-[#72B943]
-                  "
-                >
-                  Navigation
-                </span>
-
-                <span
-                  className="
-                    text-[8px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.18em]
-                    text-[#17352A]/40
-                    dark:text-white/40
-                  "
-                >
-                  Tejays Agri
-                </span>
-              </div>
-
+  
               {/* =================================================
                   MOBILE NAVIGATION
               ================================================= */}
@@ -599,14 +666,17 @@ export default function Header({ theme, setTheme }) {
                       border-b
                       border-black/10
                       font-display
-                      text-[18px]
+                      text-[15px]
                       font-semibold
-                      tracking-[-0.02em]
+                      tracking-[-0.01em]
                       transition-colors
                       duration-200
+
                       sm:min-h-[66px]
-                      sm:text-[20px]
+                      sm:text-[16px]
+
                       dark:border-white/10
+
                       ${isActive
                         ? 'text-[#075B3A] dark:text-[#72B943]'
                         : 'text-[#17352A] hover:text-[#075B3A] dark:text-white dark:hover:text-[#72B943]'
@@ -621,6 +691,7 @@ export default function Header({ theme, setTheme }) {
                               text-[8px]
                               font-bold
                               tracking-[0.15em]
+
                               ${isActive
                                 ? 'text-[#72B943]'
                                 : 'text-[#17352A]/30 dark:text-white/25'
@@ -646,6 +717,7 @@ export default function Header({ theme, setTheme }) {
                             bg-[#72B943]
                             transition-opacity
                             duration-200
+
                             ${isActive
                               ? 'opacity-100'
                               : 'opacity-0 group-hover:opacity-100'

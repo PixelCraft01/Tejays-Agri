@@ -4,42 +4,85 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root {
   font-family: 'Inter', sans-serif;
+
   --font-body: 'Manrope', sans-serif;
-  --font-display: 'Sora', sans-serif;
+  --font-display: 'Manrope', 'Inter', sans-serif;
+
+  --color-light-bg: #f7f7f2;
+  --color-light-text: #0b1210;
+
+  --color-dark-bg: #0b1210;
+  --color-dark-text: #edf7f2;
+
+  --brand-green: #075b3a;
+  --brand-green-dark: #064c31;
+  --brand-lime: #72b943;
+
   line-height: 1.5;
   font-weight: 400;
-  color: #0b1210;
-  background: #f7f7f2;
+
+  color: var(--color-light-text);
+  background: var(--color-light-bg);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* =========================================================
+   HTML
+========================================================= */
+
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
 }
 
+/* =========================================================
+   BODY
+========================================================= */
+
 body {
   margin: 0;
   min-width: 320px;
   max-width: 100%;
+
   overflow-x: clip;
-  background: #f7f7f2;
-  color: #0b1210;
+
+  background: var(--color-light-bg);
+  color: var(--color-light-text);
+
   font-family: var(--font-body);
 }
 
+/* Dark mode */
+
 html.dark body {
-  background: #0b1210;
-  color: #edf7f2;
+  background: var(--color-dark-bg);
+  color: var(--color-dark-text);
 }
+
+/* =========================================================
+   ROOT
+========================================================= */
 
 #root {
   min-height: 100vh;
+}
+
+/* =========================================================
+   GLOBAL ELEMENTS
+========================================================= */
+
+* {
+  box-sizing: border-box;
 }
 
 img {
@@ -57,21 +100,47 @@ textarea {
   font: inherit;
 }
 
-* {
-  box-sizing: border-box;
+/* =========================================================
+   DISPLAY FONT
+========================================================= */
+
+.font-display {
+  font-family: var(--font-display);
 }
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+  width: 100%;
+  isolation: isolate;
+}
+
+/* =========================================================
+   HEADER MARQUEE
+========================================================= */
 
 .marquee-shell {
   position: relative;
+  width: 100%;
+  overflow: hidden;
   white-space: nowrap;
 }
 
 .marquee-track {
   display: inline-flex;
+  width: max-content;
   min-width: max-content;
+
+  white-space: nowrap;
+
   will-change: transform;
+
   animation: marquee 26s linear infinite;
 }
+
+/* Marquee animation */
 
 @keyframes marquee {
   from {
@@ -82,6 +151,63 @@ textarea {
     transform: translateX(-50%);
   }
 }
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu-overlay {
+  overscroll-behavior: contain;
+
+  animation:
+    mobile-menu-in 220ms ease-out both;
+}
+
+.mobile-menu-in {
+  animation:
+    mobile-menu-in 220ms ease-out both;
+}
+
+.mobile-menu-out {
+  animation:
+    mobile-menu-out 220ms ease-in both;
+}
+
+/* =========================================================
+   MOBILE MENU OPEN
+========================================================= */
+
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateX(3%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =========================================================
+   MOBILE MENU CLOSE
+========================================================= */
+
+@keyframes mobile-menu-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(3%);
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -96,42 +222,87 @@ textarea {
 
   .marquee-track {
     animation: none;
+    transform: none;
   }
 }
 
-.font-display {
-  font-family: 'Manrope', 'Inter', sans-serif;
-}
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-.mobile-menu-overlay {
-  animation: mobile-menu-in 220ms ease-out both;
-  overscroll-behavior: contain;
-}
-
-.mobile-menu-out {
-  animation: mobile-menu-out 220ms ease-in both;
-}
-
-@keyframes mobile-menu-in {
-  from {
-    opacity: 0;
-    transform: translateX(3%);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
+@media (max-width: 639px) {
+  .marquee-track {
+    animation-duration: 22s;
   }
 }
 
-@keyframes mobile-menu-out {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* =========================================================
+   TABLET
+========================================================= */
 
-  to {
-    opacity: 0;
-    transform: translateX(3%);
+@media (min-width: 640px) and (max-width: 1023px) {
+  .marquee-track {
+    animation-duration: 24s;
   }
+}
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1024px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
+}
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+========================================================= */
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--brand-lime);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+  background: var(--brand-green);
+  color: #ffffff;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(7, 91, 58, 0.25);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(7, 91, 58, 0.45);
+}
+
+/* Dark scrollbar */
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(114, 185, 67, 0.35);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(114, 185, 67, 0.55);
 }
