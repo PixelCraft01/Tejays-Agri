@@ -2,32 +2,6 @@ import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { assetPath } from '../utils/assetPath'
-const products = [
-  {
-    no: '01', title: 'MILK', subtitle: 'Pure & Precise', description: 'A controlled primary dairy stream built around quality, consistency and traceability.', image: assetPath('/images/ecosystem/milk.png'), link: '/dairy-foods#milk',
-  },
-  {
-    no: '02', title: 'DAIRY PRODUCTS', subtitle: 'Value Added Dairy', description: 'Extending primary milk into differentiated dairy products and everyday food formats.', image: assetPath('/images/ecosystem/dairy-products.png'), link: '/dairy-foods#dairy-products',
-  },
-  {
-    no: '03', title: 'CHEESE', subtitle: 'Premium Dairy', description: 'A higher-value dairy pathway focused on product quality, controlled processing and differentiation.', image: assetPath('/images/ecosystem/cheese.png'), link: '/dairy-foods#cheese',
-  },
-  {
-    no: '04', title: 'WHEY', subtitle: 'High Value Ingredients', description: 'Creating ingredient opportunities from dairy streams for food and nutrition applications.', image: assetPath('/images/ecosystem/whey.png'), link: '/dairy-foods#whey',
-  },
-  {
-    no: '05', title: 'NUTRITION', subtitle: 'Advanced Nutrition', description: 'Exploring dairy-derived nutrition opportunities through ingredients, proteins and future food applications.', image: assetPath('/images/ecosystem/nutrition.png'), link: '/dairy-foods#nutrition',
-  },
-  {
-    no: '06', title: 'PROCESSING', subtitle: 'Modern Infrastructure', description: 'Controlled processing systems designed to support quality, consistency and scalable operations.', image: assetPath('/images/ecosystem/processing.png'), link: '/dairy-foods#processing',
-  },
-  {
-    no: '07', title: 'FOOD INNOVATION', subtitle: 'Future Food Pathways', description: 'Exploring new product formats that connect dairy capability with evolving food and consumer needs.', image: assetPath('/images/ecosystem/dairy-products.png'), link: '/dairy-foods#food-innovation',
-  },
-  {
-    no: '08', title: 'INGREDIENTS', subtitle: 'Dairy Based Value', description: 'Building higher-value ingredient pathways from milk and dairy streams across the wider ecosystem.', image: assetPath('/images/ecosystem/whey.png'), link: '/dairy-foods#ingredients',
-  },
-]
 
 const capabilities = [
   {
@@ -79,6 +53,20 @@ const valueChain = [
   },
 ]
 
+const processingPoints = [
+  'Quality & consistency',
+  'Controlled transformation',
+  'Value-added opportunities',
+  'Future product development',
+]
+
+const nutritionTags = [
+  'WHEY',
+  'PROTEIN',
+  'INGREDIENTS',
+  'NUTRITION',
+]
+
 export default function DairyFoods() {
   usePageMeta(
     'Tejays Agri | Dairy & Foods',
@@ -89,10 +77,12 @@ export default function DairyFoods() {
     <main className="bg-[#f7f7f2] text-[#0b1210] dark:bg-[#0b1210] dark:text-[#edf7f2]">
 
       {/* ======================================================
-          HERO
+          01 — HERO
       ====================================================== */}
-      <section className="relative isolate min-h-[570px] overflow-hidden bg-[#07100D] text-white sm:min-h-[620px] lg:min-h-[660px]">
-
+      <section
+        id="dairy-foods-hero"
+        className="relative isolate min-h-[570px] overflow-hidden bg-[#07100D] text-white sm:min-h-[620px] lg:min-h-[660px]"
+      >
         {/* BACKGROUND */}
         <div className="absolute inset-0">
 
@@ -102,22 +92,16 @@ export default function DairyFoods() {
             className="h-full w-full object-cover object-center opacity-45 transition-transform duration-[1800ms] hover:scale-[1.03]"
           />
 
-          {/* Main dark layer */}
           <div className="absolute inset-0 bg-[#07100D]/75" />
 
-          {/* Left content gradient */}
           <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#040706] via-[#07100D]/96 to-transparent lg:w-[72%]" />
 
-          {/* Soft center transition */}
           <div className="absolute inset-y-0 left-[42%] hidden w-[24%] bg-[#07100D]/50 blur-[70px] lg:block" />
 
-          {/* Top fade */}
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#07100D] to-transparent" />
 
-          {/* Bottom fade */}
           <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#07100D] to-transparent" />
 
-          {/* Subtle grid */}
           <div className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(rgba(114,185,67,1)_1px,transparent_1px),linear-gradient(90deg,rgba(114,185,67,1)_1px,transparent_1px)] [background-size:88px_88px]" />
 
         </div>
@@ -182,7 +166,6 @@ export default function DairyFoods() {
                 <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
-
               <Link
                 to="/nutrition"
                 className="group inline-flex w-full items-center justify-center gap-3 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-[8px] font-bold uppercase tracking-[0.18em] text-white/70 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#72B943] hover:bg-[#72B943]/10 hover:text-[#72B943] sm:w-auto"
@@ -218,7 +201,7 @@ export default function DairyFoods() {
           </div>
 
 
-          {/* BOTTOM RIGHT STATUS */}
+          {/* STATUS */}
           <div className="pointer-events-none absolute bottom-7 right-6 hidden items-center gap-3 lg:flex xl:right-12">
 
             <span className="text-[7px] font-bold uppercase tracking-[0.25em] text-white/25">
@@ -234,195 +217,204 @@ export default function DairyFoods() {
           </div>
 
         </div>
-
       </section>
 
 
       {/* ======================================================
-    INTRO
-====================================================== */}
-      <section className="px-5 py-16 text-center sm:px-8 sm:py-20 lg:px-12 lg:py-24">
-        <div className="mx-auto max-w-[1250px]">
-
-          {/* TOP LABEL */}
-          <div data-aos="fade-up">
-            <p className="text-[9px] font-semibold tracking-[0.28em] text-[#075b3a] dark:text-[#72b943] sm:text-[10px]">
-              DAIRY VALUE CREATION
-            </p>
-
-            <div className="mx-auto mt-4 h-px w-16 bg-[#075b3a]/30 dark:bg-[#72b943]/30 sm:mt-5 sm:w-24" />
-
-            <p className="mx-auto mt-4 max-w-sm text-[10px] leading-5 text-black/45 dark:text-white/40 sm:mt-5 sm:text-xs sm:leading-6">
-              One connected system. Multiple pathways for value.
-            </p>
-          </div>
-
-
-          {/* MAIN CONTENT */}
-          <div
-            data-aos="fade-up"
-            data-aos-delay="100"
-            className="mx-auto mt-8 max-w-[1050px] sm:mt-10 lg:mt-12"
-          >
-            <h2 className="text-3xl font-semibold leading-[1.02] tracking-[-0.05em] sm:text-4xl md:text-5xl lg:text-6xl">
-              Dairy is not only a product.
-              <br />
-              It is a{' '}
-              <span className="text-[#075b3a] dark:text-[#72b943]">
-                value platform.
-              </span>
-            </h2>
-
-            <p className="mx-auto mt-5 max-w-[760px] text-[11px] leading-6 text-black/60 dark:text-white/55 sm:mt-6 sm:text-sm sm:leading-7 lg:text-base">
-              TEJAYS AGRI looks at dairy as an interconnected operating system.
-              Milk creates the starting point, while processing, products,
-              ingredients and nutrition create additional opportunities across
-              the value chain.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ======================================================
-          PRODUCT CARDS — NEW DESIGN
+          02 — DAIRY VALUE CREATION
       ====================================================== */}
-      <section className="px-6 pb-24 sm:px-10 lg:px-16 lg:pb-32">
-        <div className="mx-auto max-w-[1500px]">
+      <section
+        id="dairy-value"
+        className="px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+      >
+        <div className="mx-auto max-w-[1400px]">
 
+          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
 
-          <div className="mb-10 text-center sm:mb-12 lg:mb-14">
-
-            <div data-aos="fade-up">
-
-              <p className="text-[9px] font-semibold tracking-[0.28em] text-[#075b3a] dark:text-[#72b943] sm:text-[10px]">
-                PRODUCT PATHWAYS
-              </p>
-
-              <div className="mx-auto mt-4 h-px w-16 bg-[#075b3a]/30 dark:bg-[#72b943]/30 sm:mt-5 sm:w-24" />
-
-            </div>
-
+            {/* LEFT — MAIN MESSAGE */}
             <div
-              data-aos="fade-up"
-              data-aos-delay="100"
-              className="mx-auto mt-7 max-w-[900px] sm:mt-8 lg:mt-10"
+              data-aos="fade-right"
+              className="text-center lg:text-left"
             >
 
-              <h2 className="text-3xl font-semibold leading-[1.03] tracking-[-0.045em] sm:text-4xl md:text-5xl lg:text-6xl">
-                One dairy ecosystem.
+              <div className="flex items-center justify-center gap-3 lg:justify-start">
+
+                <span className="h-1.5 w-1.5 rounded-full bg-[#72b943]" />
+
+                <p className="text-[9px] font-semibold tracking-[0.28em] text-[#075b3a] dark:text-[#72b943] sm:text-[10px]">
+                  DAIRY VALUE CREATION
+                </p>
+
+              </div>
+
+              <div className="mx-auto mt-5 h-px w-16 bg-[#075b3a]/30 dark:bg-[#72b943]/30 sm:w-20 lg:mx-0" />
+
+              <h2 className="mt-7 text-4xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-5xl md:text-6xl lg:text-7xl">
+                Dairy is not only
                 <br />
-                Many ways to{' '}
+                a product.
+                <br />
+                It is a{' '}
                 <span className="text-[#075b3a] dark:text-[#72b943]">
-                  create value.
+                  value platform.
                 </span>
               </h2>
 
-              <p className="mx-auto mt-5 max-w-[700px] text-[11px] leading-6 text-black/50 dark:text-white/45 sm:mt-6 sm:text-sm sm:leading-7 lg:text-base">
-                From primary milk to higher-value dairy products and ingredients,
-                every pathway remains connected to the same ecosystem.
+              <p className="mx-auto mt-7 max-w-[650px] text-[11px] leading-6 text-black/55 dark:text-white/45 sm:text-sm sm:leading-7 lg:mx-0 lg:text-base">
+                TEJAYS AGRI looks at dairy as an interconnected operating
+                system. Milk creates the starting point, while processing,
+                products, ingredients and nutrition create additional
+                opportunities across the value chain.
               </p>
+
+              <div className="mt-7 flex items-center justify-center gap-3 lg:justify-start">
+
+                <span className="text-[7px] font-semibold tracking-[0.2em] text-black/30 dark:text-white/25 sm:text-[8px]">
+                  ONE SYSTEM
+                </span>
+
+                <span className="h-px w-8 bg-[#075b3a]/25 dark:bg-[#72b943]/30" />
+
+                <span className="text-[7px] font-semibold tracking-[0.2em] text-[#075b3a] dark:text-[#72b943] sm:text-[8px]">
+                  MULTIPLE PATHWAYS
+                </span>
+
+              </div>
+
+            </div>
+
+
+            {/* RIGHT — VALUE FLOW */}
+            <div
+              data-aos="fade-left"
+              data-aos-delay="100"
+              className="border-t border-black/10 pt-8 dark:border-white/10 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0"
+            >
+
+              <div className="mb-7 text-center lg:text-left">
+
+                <p className="text-[8px] font-semibold tracking-[0.25em] text-black/35 dark:text-white/30">
+                  VALUE CREATION FLOW
+                </p>
+
+                <p className="mx-auto mt-2 max-w-lg text-[10px] leading-5 text-black/45 dark:text-white/35 lg:mx-0 sm:text-xs">
+                  One connected pathway from primary dairy to higher-value
+                  opportunities.
+                </p>
+
+              </div>
+
+
+              <div className="mx-auto max-w-[560px] lg:mx-0">
+
+                {[
+                  {
+                    no: '01',
+                    title: 'PRIMARY DAIRY',
+                    text: 'Quality, consistency and controlled primary output.',
+                  },
+                  {
+                    no: '02',
+                    title: 'PROCESSING',
+                    text: 'Transformation into controlled and differentiated streams.',
+                  },
+                  {
+                    no: '03',
+                    title: 'VALUE-ADDED PRODUCTS',
+                    text: 'Creating new product opportunities beyond primary milk.',
+                  },
+                  {
+                    no: '04',
+                    title: 'INGREDIENTS & NUTRITION',
+                    text: 'Higher-value pathways through whey, ingredients and future nutrition.',
+                  },
+                ].map((item, index) => (
+                  <div key={item.no} className="relative">
+
+                    <div className="group flex items-center gap-4 py-4 sm:gap-5 sm:py-5">
+
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black/10 text-[8px] font-semibold tracking-[0.12em] text-[#075b3a] transition-all duration-300 group-hover:border-[#72b943] group-hover:bg-[#72b943] group-hover:text-[#07100d] sm:h-9 sm:w-9 sm:text-[9px] dark:border-white/10 dark:text-[#72b943]">
+                        {item.no}
+                      </span>
+
+                      <div className="flex-1 text-center lg:text-left">
+
+                        <h3 className="text-[10px] font-semibold tracking-[0.09em] sm:text-sm">
+                          {item.title}
+                        </h3>
+
+                        <p className="mx-auto mt-1 max-w-[430px] text-[9px] leading-5 text-black/45 dark:text-white/40 sm:text-xs sm:leading-6 lg:mx-0">
+                          {item.text}
+                        </p>
+
+                      </div>
+
+                      <span className="hidden text-lg text-black/15 transition duration-300 group-hover:translate-x-1 group-hover:text-[#075b3a] sm:block dark:text-white/15 dark:group-hover:text-[#72b943]">
+                        →
+                      </span>
+
+                    </div>
+
+                    {index !== 3 && (
+                      <div className="ml-4 h-5 border-l border-dashed border-[#075b3a]/20 dark:border-[#72b943]/20 sm:ml-[18px]" />
+                    )}
+
+                  </div>
+                ))}
+
+              </div>
+
+
+              <div className="mt-7 flex items-center justify-center gap-3 border-t border-black/10 pt-5 dark:border-white/10 lg:justify-start">
+
+                <span className="text-[7px] font-semibold tracking-[0.2em] text-black/30 dark:text-white/25">
+                  DAIRY
+                </span>
+
+                <span className="h-px w-5 bg-black/10 dark:bg-white/10" />
+
+                <span className="text-[7px] font-semibold tracking-[0.2em] text-[#075b3a] dark:text-[#72b943]">
+                  VALUE
+                </span>
+
+                <span className="h-px w-5 bg-black/10 dark:bg-white/10" />
+
+                <span className="text-[7px] font-semibold tracking-[0.2em] text-black/30 dark:text-white/25">
+                  NUTRITION
+                </span>
+
+              </div>
 
             </div>
 
           </div>
-
-
-
-
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
-            {products.map((product, index) => (
-              <article
-                key={product.no}
-                data-aos="fade-up"
-                data-aos-delay={index * 50}
-                className="group relative overflow-hidden rounded-2xl border border-black/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#075b3a]/30 hover:shadow-[0_14px_35px_rgba(7,91,58,0.10)] dark:border-white/10 dark:bg-[#111813]"
-              >
-                {/* IMAGE */}
-                <div className="relative h-[190px] overflow-hidden sm:h-[250px]">
-
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-
-                  {/* DARK GRADIENT */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-
-                  {/* NUMBER */}
-                  <div className="absolute left-3 top-3 sm:left-4 sm:top-4">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-green-800 text-[8px] font-semibold text-white backdrop-blur-md sm:h-8 sm:w-8 sm:text-[9px]">
-                      {product.no}
-                    </span>
-                  </div>
-
-                  {/* PRODUCT LABEL */}
-                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4">
-                    <p className="text-[7px] font-medium uppercase tracking-[0.16em] text-[#ffffff83] sm:text-[8px]">
-                      {product.subtitle}
-                    </p>
-
-                    <h3 className="mt-1 text-base font-semibold leading-none tracking-[-0.03em] text-white sm:text-xl">
-                      {product.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* BODY */}
-                <div className="p-3 sm:p-4">
-
-                  <p className="line-clamp-2 text-[9px] leading-[1.55] text-black/55 sm:text-[11px] sm:leading-[1.65] dark:text-white/50">
-                    {product.description}
-                  </p>
-
-                  {/* FOOTER */}
-                  <div className="mt-3 flex items-center justify-between border-t border-black/10 pt-3 dark:border-white/10">
-
-                    <span className="text-[7px] font-semibold tracking-[0.16em] text-[#075b3a] sm:text-[8px] dark:text-[#72b943]">
-                      VALUE PATHWAY
-                    </span>
-
-                    <Link
-                      to={product.link || '/dairy-foods'}
-                      aria-label={`Explore ${product.title}`}
-                      className="flex h-7 w-7 items-center justify-center rounded-full border border-[#075b3a]/15 text-[11px] text-[#075b3a] transition-all duration-300 group-hover:bg-[#075b3a] group-hover:text-white sm:h-8 sm:w-8 dark:border-[#72b943]/20 dark:text-[#72b943] dark:group-hover:bg-[#72b943] dark:group-hover:text-[#07100d]"
-                    >
-                      ↗
-                    </Link>
-
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-
 
         </div>
       </section>
 
 
       {/* ======================================================
-          DARK VALUE CHAIN
+          03 — VALUE CHAIN
       ====================================================== */}
-      <section className="bg-[#0e1915] px-5 py-20 text-white sm:px-8 sm:py-24 lg:px-12 lg:py-28">
+      <section
+        id="value-chain"
+        className="bg-[#0e1915] px-5 py-20 text-white sm:px-8 sm:py-24 lg:px-12 lg:py-28"
+      >
         <div className="mx-auto max-w-[1250px]">
 
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-16">
 
-            {/* ==================================================
-          LEFT — VALUE CHAIN INTRO
-      ================================================== */}
+            {/* LEFT */}
             <div
               data-aos="fade-up"
               className="text-center lg:text-left"
             >
+
               <p className="text-[9px] font-semibold tracking-[0.28em] text-[#72b943] sm:text-[10px]">
                 VALUE CHAIN
               </p>
 
-              <div className="mx-auto mt-4 h-px w-16 bg-[#72b943]/35 sm:mt-5 sm:w-24 lg:mx-0" />
+              <div className="mx-auto mt-4 h-px w-16 bg-[#72b943]/35 sm:w-24 lg:mx-0" />
 
               <h2 className="mt-7 text-3xl font-semibold leading-[1.03] tracking-[-0.05em] sm:text-4xl md:text-5xl lg:text-6xl">
                 From biological output
@@ -433,22 +425,22 @@ export default function DairyFoods() {
                 </span>
               </h2>
 
-              <p className="mx-auto mt-5 max-w-[620px] text-[11px] leading-6 text-white/50 sm:mt-6 sm:text-sm sm:leading-7 lg:mx-0 lg:text-base">
+              <p className="mx-auto mt-5 max-w-[620px] text-[11px] leading-6 text-white/50 sm:text-sm sm:leading-7 lg:mx-0 lg:text-base">
                 The opportunity is not a single product. It is the ability to
                 connect every stage and create more value from the complete
                 ecosystem.
               </p>
+
             </div>
 
 
-            {/* ==================================================
-          RIGHT — VALUE CHAIN STEPS
-      ================================================== */}
+            {/* RIGHT */}
             <div
               data-aos="fade-up"
               data-aos-delay="120"
               className="w-full"
             >
+
               <div className="border-y border-white/10">
 
                 {valueChain.map((item) => (
@@ -457,13 +449,10 @@ export default function DairyFoods() {
                     className="group grid grid-cols-[34px_1fr_auto] items-center gap-3 border-b border-white/10 py-5 last:border-b-0 sm:grid-cols-[50px_1fr_auto] sm:gap-5 sm:py-6"
                   >
 
-                    {/* NUMBER */}
                     <span className="text-center text-[8px] font-semibold tracking-[0.2em] text-[#72b943]/65 sm:text-[10px]">
                       {item.no}
                     </span>
 
-
-                    {/* CONTENT */}
                     <div className="text-center lg:text-left">
 
                       <h3 className="text-sm font-semibold tracking-[-0.02em] sm:text-lg md:text-xl">
@@ -476,8 +465,6 @@ export default function DairyFoods() {
 
                     </div>
 
-
-                    {/* ARROW */}
                     <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 text-xs text-white/25 transition-all duration-300 group-hover:translate-x-1 group-hover:border-[#72b943]/45 group-hover:bg-[#72b943]/10 group-hover:text-[#72b943] sm:h-9 sm:w-9 sm:text-sm">
                       →
                     </span>
@@ -486,19 +473,19 @@ export default function DairyFoods() {
                 ))}
 
               </div>
+
             </div>
 
           </div>
 
 
-          {/* ==================================================
-        BOTTOM STATEMENT
-    ================================================== */}
+          {/* BOTTOM STATEMENT */}
           <div
             data-aos="fade-up"
             data-aos-delay="180"
             className="mt-10 max-w-[760px] text-center sm:mt-12 lg:ml-auto lg:text-right"
           >
+
             <div className="mb-4 flex items-center justify-center gap-3 lg:justify-end">
 
               <span className="h-px w-8 bg-[#72b943]/40 sm:w-10" />
@@ -513,6 +500,7 @@ export default function DairyFoods() {
               Every stage contributes to the next — creating a more connected
               dairy and food ecosystem.
             </p>
+
           </div>
 
         </div>
@@ -520,20 +508,121 @@ export default function DairyFoods() {
 
 
       {/* ======================================================
-          PROCESSING / VISUAL SPLIT
+          04 — MODERN PROCESSING
       ====================================================== */}
-      <section className="px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28">
+      <section
+        id="processing"
+        className="px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
+      >
+        <div className="mx-auto max-w-[1250px]">
+
+          <div
+            data-aos="fade-up"
+            className="overflow-hidden rounded-[2rem] bg-[#dfe8e0] dark:bg-[#13221c]"
+          >
+
+            <div className="grid lg:grid-cols-[1fr_1fr]">
+
+              {/* IMAGE */}
+              <div className="relative h-[320px] overflow-hidden sm:h-[400px] lg:h-[520px]">
+
+                <img
+                  src={assetPath('/images/ecosystem/processing.png')}
+                  alt="Dairy Processing"
+                  className="h-full w-full object-cover transition duration-700 hover:scale-105"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+
+                <div className="absolute bottom-6 left-5 right-5 text-center sm:bottom-8 sm:left-8 sm:right-8 lg:bottom-8 lg:left-10 lg:right-10 lg:text-left">
+
+                  <p className="text-[8px] font-semibold tracking-[0.24em] text-[#72b943] sm:text-[9px]">
+                    PROCESSING
+                  </p>
+
+                  <h3 className="mx-auto mt-2 max-w-xl text-2xl font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-3xl lg:mx-0 lg:text-4xl">
+                    Turning primary dairy into controlled value streams.
+                  </h3>
+
+                </div>
+
+              </div>
+
+
+              {/* CONTENT */}
+              <div className="flex items-center justify-center p-7 text-center sm:p-10 lg:justify-start lg:p-14 lg:text-left">
+
+                <div className="w-full max-w-xl">
+
+                  <p className="text-[9px] font-semibold tracking-[0.25em] text-[#075b3a] dark:text-[#72b943] sm:text-[10px]">
+                    MODERN PROCESSING
+                  </p>
+
+                  <div className="mx-auto mt-4 h-px w-14 bg-[#075b3a]/30 dark:bg-[#72b943]/30 lg:mx-0" />
+
+                  <h2 className="mt-6 text-3xl font-semibold leading-[1.03] tracking-[-0.045em] sm:text-4xl lg:text-5xl">
+                    Better products begin with better systems.
+                  </h2>
+
+                  <p className="mt-5 text-[11px] leading-6 text-black/60 dark:text-white/50 sm:text-sm sm:leading-7">
+                    Processing is treated as part of the larger ecosystem
+                    rather than an isolated downstream activity. It connects
+                    dairy production with product quality, ingredients and
+                    future nutrition pathways.
+                  </p>
+
+
+                  {/* POINTS */}
+                  <div className="mx-auto mt-7 max-w-md lg:mx-0">
+
+                    {processingPoints.map((item, index) => (
+                      <div
+                        key={item}
+                        className="flex items-center justify-center gap-3 border-b border-black/10 py-3.5 last:border-b-0 dark:border-white/10 lg:justify-start"
+                      >
+
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#075b3a]/10 text-[7px] font-semibold text-[#075b3a] dark:bg-[#72b943]/10 dark:text-[#72b943]">
+                          {index + 1}
+                        </span>
+
+                        <span className="text-[10px] font-medium sm:text-xs">
+                          {item}
+                        </span>
+
+                      </div>
+                    ))}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* ======================================================
+          05 — FUTURE NUTRITION
+      ====================================================== */}
+      <section
+        id="nutrition"
+        className="px-5 py-20 text-center sm:px-8 sm:py-24 lg:px-12 lg:py-28 lg:text-left"
+      >
         <div className="mx-auto max-w-[1500px]">
 
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
 
-            {/* ======================================================
-          IMAGE
-      ====================================================== */}
+            {/* IMAGE */}
             <div
               data-aos="fade-right"
-              className="relative h-[330px] overflow-hidden rounded-[2.5rem] sm:h-[420px] lg:h-[460px]"
+              className="relative h-[330px] overflow-hidden rounded-[2rem] sm:h-[420px] lg:h-[460px]"
             >
+
               <img
                 src={assetPath('/images/ecosystem/nutrition.png')}
                 alt="Advanced Dairy Nutrition"
@@ -542,10 +631,9 @@ export default function DairyFoods() {
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
-              {/* IMAGE CONTENT */}
-              <div className="absolute bottom-6 left-5 right-5 text-center sm:bottom-8 sm:left-8 sm:right-8 lg:bottom-8 lg:left-10 lg:right-10 lg:text-left">
+              <div className="absolute bottom-6 left-5 right-5 text-center sm:bottom-8 sm:left-8 sm:right-8 lg:bottom-10 lg:left-10 lg:right-10 lg:text-left">
 
-                <p className="text-[9px] font-semibold tracking-[0.24em] text-white/65">
+                <p className="text-[9px] font-semibold tracking-[0.24em] text-[#72b943]">
                   FUTURE NUTRITION
                 </p>
 
@@ -554,26 +642,22 @@ export default function DairyFoods() {
                 </p>
 
               </div>
+
             </div>
 
 
-            {/* ======================================================
-          CONTENT
-      ====================================================== */}
+            {/* CONTENT */}
             <div
               data-aos="fade-left"
-              className="flex flex-col items-center justify-center text-center lg:items-start lg:text-left"
+              className="flex flex-col items-center justify-center lg:items-start"
             >
 
-              {/* LABEL */}
               <p className="text-[10px] font-semibold tracking-[0.28em] text-[#075b3a] dark:text-[#72b943]">
                 BEYOND DAIRY
               </p>
 
-              {/* ACCENT */}
               <div className="mx-auto mt-4 h-px w-14 bg-[#075b3a]/30 dark:bg-[#72b943]/30 lg:mx-0" />
 
-              {/* HEADING */}
               <h2 className="mt-6 max-w-2xl text-3xl font-semibold leading-[1.02] tracking-[-0.05em] sm:text-4xl md:text-5xl lg:text-6xl">
                 From dairy output
                 <br />
@@ -583,7 +667,6 @@ export default function DairyFoods() {
                 </span>
               </h2>
 
-              {/* DESCRIPTION */}
               <p className="mt-6 max-w-xl text-[11px] leading-6 text-black/60 dark:text-white/50 sm:text-sm sm:leading-7 lg:mt-7">
                 Milk and whey can support a wider ingredient and nutrition
                 ecosystem. The long-term direction is to create higher-value
@@ -592,22 +675,24 @@ export default function DairyFoods() {
 
 
               {/* TAGS */}
-              <div className="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start">
-                {['WHEY', 'PROTEIN', 'INGREDIENTS', 'NUTRITION'].map((item) => (
+              <div className="mt-7 flex flex-wrap justify-center gap-2.5 lg:justify-start">
+
+                {nutritionTags.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-black/10 px-4 py-2 text-[9px] font-semibold tracking-[0.18em] transition duration-300 hover:border-[#075b3a]/40 hover:bg-[#075b3a]/5 dark:border-white/10 dark:hover:border-[#72b943]/40 dark:hover:bg-[#72b943]/5"
+                    className="rounded-full border border-black/10 px-3.5 py-2 text-[8px] font-semibold tracking-[0.18em] transition duration-300 hover:border-[#075b3a]/40 hover:bg-[#075b3a]/5 dark:border-white/10 dark:hover:border-[#72b943]/40 dark:hover:bg-[#72b943]/5 sm:px-4 sm:py-2.5 sm:text-[9px]"
                   >
                     {item}
                   </span>
                 ))}
+
               </div>
 
 
               {/* CTA */}
               <Link
                 to="/nutrition"
-                className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#075b3a] px-6 py-3 text-[10px] font-semibold tracking-[0.14em] text-white transition duration-300 hover:-translate-y-1 hover:bg-[#064c31] dark:bg-[#72b943] dark:text-[#07100d] dark:hover:bg-[#86cd55]"
+                className="group mt-7 inline-flex items-center justify-center gap-3 rounded-full bg-[#075b3a] px-6 py-3 text-[9px] font-semibold tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#064c31] dark:bg-[#72b943] dark:text-[#07100d] dark:hover:bg-[#86cd55] sm:mt-8 sm:px-7 sm:py-3.5 sm:text-[10px]"
               >
                 EXPLORE NUTRITION
 
@@ -625,20 +710,22 @@ export default function DairyFoods() {
 
 
       {/* ======================================================
-          CAPABILITIES
+          06 — OUR DIRECTION
       ====================================================== */}
-      <section className="border-y border-black/10 px-5 py-20 dark:border-white/10 sm:px-8 sm:py-24 lg:px-12 lg:py-28">
+      <section
+        id="our-direction"
+        className="border-y border-black/10 px-5 py-20 dark:border-white/10 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
+      >
         <div className="mx-auto max-w-[1400px]">
 
           <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:gap-16">
 
-            {/* ======================================================
-          LEFT CONTENT
-      ====================================================== */}
+            {/* LEFT CONTENT */}
             <div
               data-aos="fade-up"
               className="text-center lg:text-left"
             >
+
               <p className="text-[9px] font-semibold tracking-[0.28em] text-[#075b3a] dark:text-[#72b943] sm:text-[10px]">
                 OUR DIRECTION
               </p>
@@ -660,16 +747,19 @@ export default function DairyFoods() {
               </p>
 
               <div className="mt-7 flex justify-center gap-2 lg:justify-start">
+
                 <span className="h-1.5 w-8 rounded-full bg-[#075b3a] dark:bg-[#72b943]" />
+
                 <span className="h-1.5 w-2 rounded-full bg-black/10 dark:bg-white/10" />
+
                 <span className="h-1.5 w-2 rounded-full bg-black/10 dark:bg-white/10" />
+
               </div>
+
             </div>
 
 
-            {/* ======================================================
-          RIGHT — 2 x 2 CARDS
-      ====================================================== */}
+            {/* RIGHT — 2 x 2 CARDS */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
 
               {capabilities.map((item, index) => (
@@ -694,8 +784,9 @@ export default function DairyFoods() {
                   </div>
 
 
-                  {/* ACCENT */}
+                  {/* ACCENT — LEFT ALIGNED EVERYWHERE */}
                   <div className="mt-5 h-[2px] w-7 bg-[#72b943] transition-all duration-500 group-hover:w-12 sm:mt-7" />
+
 
                   {/* TITLE */}
                   <h3 className="mt-4 text-[10px] font-semibold leading-[1.3] tracking-[0.08em] sm:text-sm sm:tracking-[0.1em]">
@@ -709,7 +800,7 @@ export default function DairyFoods() {
                   </p>
 
 
-                  {/* BOTTOM BRAND */}
+                  {/* BRAND */}
                   <div className="absolute bottom-3 left-4 sm:bottom-5 sm:left-6">
                     <span className="text-[6px] font-semibold tracking-[0.18em] text-black/25 sm:text-[7px] dark:text-white/20">
                       TEJAYS AGRI
@@ -728,105 +819,12 @@ export default function DairyFoods() {
 
 
       {/* ======================================================
-          NUTRITION CONNECTION
+          07 — PROPOSED DIRECTION
       ====================================================== */}
-      <section className="px-5 py-20 text-center sm:px-8 sm:py-24 lg:px-12 lg:py-28 lg:text-left">
-        <div className="mx-auto max-w-[1500px]">
-
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-
-            {/* IMAGE */}
-            <div
-              data-aos="fade-right"
-              className="relative h-[330px] overflow-hidden rounded-[2rem] sm:h-[420px] lg:h-[460px]"
-            >
-              <img
-                src={assetPath('/images/ecosystem/nutrition.png')}
-                alt="Advanced Dairy Nutrition"
-                className="h-full w-full object-cover transition duration-700 hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-
-              {/* IMAGE TEXT */}
-              <div className="absolute bottom-6 left-5 right-5 text-center sm:bottom-8 sm:left-8 sm:right-8 lg:bottom-10 lg:left-10 lg:right-10 lg:text-left">
-                <p className="text-[9px] font-semibold tracking-[0.24em] text-white/65">
-                  FUTURE NUTRITION
-                </p>
-
-                <p className="mx-auto mt-2 max-w-md text-2xl font-semibold leading-tight text-white sm:text-3xl lg:mx-0">
-                  Dairy can become a platform for next-generation nutrition.
-                </p>
-              </div>
-            </div>
-
-
-            {/* CONTENT */}
-            <div
-              data-aos="fade-left"
-              className="flex flex-col items-center justify-center lg:items-start lg:justify-center"
-            >
-
-              <p className="text-[10px] font-semibold tracking-[0.28em] text-[#075b3a] dark:text-[#72b943]">
-                BEYOND DAIRY
-              </p>
-
-              {/* CENTER LINE MOBILE/TABLET — ORIGINAL DESKTOP LEFT */}
-              <div className="mx-auto mt-4 h-px w-16 bg-[#075b3a]/30 dark:bg-[#72b943]/30 lg:mx-0" />
-
-              <h2 className="mt-6 max-w-2xl text-3xl font-semibold leading-[1.02] tracking-[-0.05em] sm:text-4xl md:text-5xl lg:text-6xl">
-                From dairy output
-                <br />
-                to{' '}
-                <span className="text-[#075b3a] dark:text-[#72b943]">
-                  nutrition value.
-                </span>
-              </h2>
-
-              <p className="mt-6 max-w-xl text-[11px] leading-6 text-black/60 dark:text-white/50 sm:text-sm sm:leading-7 lg:mt-7 lg:text-left">
-                Milk and whey can support a wider ingredient and nutrition
-                ecosystem. The long-term direction is to create higher-value
-                pathways from existing dairy streams.
-              </p>
-
-
-              {/* TAGS */}
-              <div className="mt-7 flex flex-wrap justify-center gap-2.5 lg:justify-start">
-                {['WHEY', 'PROTEIN', 'INGREDIENTS', 'NUTRITION'].map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-black/10 px-3.5 py-2 text-[8px] font-semibold tracking-[0.18em] transition duration-300 hover:border-[#075b3a]/40 hover:bg-[#075b3a]/5 dark:border-white/10 dark:hover:border-[#72b943]/40 dark:hover:bg-[#72b943]/5 sm:px-4 sm:py-2.5 sm:text-[9px]"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-
-              {/* BUTTON */}
-              <Link
-                to="/nutrition"
-                className="group mt-7 inline-flex items-center justify-center gap-3 rounded-full bg-[#075b3a] px-6 py-3 text-[9px] font-semibold tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#064c31] dark:bg-[#72b943] dark:text-[#07100d] dark:hover:bg-[#86cd55] sm:mt-8 sm:px-7 sm:py-3.5 sm:text-[10px]"
-              >
-                EXPLORE NUTRITION
-
-                <span className="text-base transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </Link>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* ======================================================
-          FUTURE NOTE
-      ====================================================== */}
-      <section className="px-5 pb-20 text-center sm:px-8 sm:pb-24 lg:px-12 lg:pb-28 lg:text-left">
+      <section
+        id="future-ready"
+        className="px-5 pb-20 text-center sm:px-8 sm:pb-24 lg:px-12 lg:pb-28 lg:text-left"
+      >
         <div className="mx-auto max-w-[1250px]">
 
           <div
@@ -838,6 +836,7 @@ export default function DairyFoods() {
 
               {/* LABEL */}
               <div>
+
                 <p className="text-[9px] font-semibold tracking-[0.28em] text-[#075b3a] dark:text-[#72b943] sm:text-[10px]">
                   PROPOSED DIRECTION
                 </p>
@@ -847,16 +846,21 @@ export default function DairyFoods() {
                 <p className="mt-4 text-xs font-semibold tracking-[0.04em] text-black/75 dark:text-white/75 sm:mt-5 sm:text-sm">
                   FUTURE-READY DAIRY & FOODS
                 </p>
+
               </div>
+
 
               {/* DESCRIPTION */}
               <div>
+
                 <p className="mx-auto max-w-4xl text-sm leading-7 tracking-[-0.015em] text-black/65 dark:text-white/55 sm:text-base sm:leading-8 lg:mx-0 lg:text-lg">
-                  The dairy and food capabilities shown here represent planned,
-                  conceptual or exploratory directions unless specifically stated
-                  otherwise. The long-term objective is to connect production,
-                  processing, products and nutrition into one intelligent ecosystem.
+                  The dairy and food capabilities shown here represent
+                  planned, conceptual or exploratory directions unless
+                  specifically stated otherwise. The long-term objective is to
+                  connect production, processing, products and nutrition into
+                  one intelligent ecosystem.
                 </p>
+
               </div>
 
             </div>
@@ -868,7 +872,7 @@ export default function DairyFoods() {
 
 
       {/* ======================================================
-          CTA
+          08 — FINAL CTA
       ====================================================== */}
       <section className="bg-[#075b3a] px-5 py-16 text-center text-white sm:px-8 sm:py-20 lg:px-12 lg:py-24 lg:text-left">
         <div className="mx-auto flex max-w-[1500px] flex-col items-center gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -878,6 +882,7 @@ export default function DairyFoods() {
             data-aos="fade-up"
             className="w-full max-w-3xl"
           >
+
             <p className="text-[9px] font-semibold tracking-[0.28em] text-white/55 sm:text-[10px]">
               DAIRY & FOODS
             </p>
@@ -887,7 +892,9 @@ export default function DairyFoods() {
               <br />
               from every dairy stream.
             </h2>
+
           </div>
+
 
           {/* CTA */}
           <div
@@ -895,6 +902,7 @@ export default function DairyFoods() {
             data-aos-delay="100"
             className="flex w-full justify-center lg:w-auto lg:justify-end"
           >
+
             <Link
               to="/contact"
               className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-6 py-3 text-[9px] font-semibold tracking-[0.14em] text-[#075b3a] transition-all duration-300 hover:-translate-y-1 hover:bg-[#edf7f2] hover:shadow-[0_15px_35px_rgba(0,0,0,0.12)] sm:px-7 sm:py-3.5 sm:text-[10px]"
@@ -905,6 +913,7 @@ export default function DairyFoods() {
                 →
               </span>
             </Link>
+
           </div>
 
         </div>
@@ -913,4 +922,3 @@ export default function DairyFoods() {
     </main>
   )
 }
-
