@@ -1,95 +1,3 @@
-// import { useState } from 'react'
-// import PageHero from '../components/PageHero'
-// import { usePageMeta } from '../hooks/usePageMeta'
-
-// export default function Contact() {
-//   usePageMeta('Tejays Agri | Contact', 'Contact Tejays Agri to discuss future dairy, nutrition, technology and sustainability opportunities.')
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     email: '',
-//     company: '',
-//     phone: '',
-//     message: ''
-//   })
-//   const [errors, setErrors] = useState({})
-//   const [submitted, setSubmitted] = useState(false)
-
-//   const validate = () => {
-//     const nextErrors = {}
-//     if (!formData.name.trim()) nextErrors.name = 'Name is required.'
-//     if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) nextErrors.email = 'Valid email is required.'
-//     if (!formData.message.trim()) nextErrors.message = 'Message is required.'
-//     return nextErrors
-//   }
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault()
-//     const nextErrors = validate()
-//     setErrors(nextErrors)
-//     if (Object.keys(nextErrors).length > 0) {
-//       setSubmitted(false)
-//       return
-//     }
-//     setSubmitted(true)
-//     setErrors({})
-//     setFormData({ name: '', email: '', company: '', phone: '', message: '' })
-//   }
-
-//   return (
-//     <>
-//       <PageHero
-//         eyebrow="Contact"
-//         title="LET'S BUILD THE FUTURE OF DAIRY."
-//         description="Start a conversation about integrated dairy, technology, nutrition, and sustainable growth."
-//       />
-
-//       <main className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
-//         <div className="rounded-[30px] border border-black/5 bg-white p-6 shadow-soft dark:border-white/10 dark:bg-[#0f1d1a] lg:p-10">
-//           <form onSubmit={handleSubmit} noValidate className="grid gap-6 md:grid-cols-2">
-//             <div>
-//               <label className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#4a5b55] dark:text-[#dfe9e4]">Name</label>
-//               <input value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full rounded-2xl border border-black/5 bg-[#f7f7f2] px-4 py-3 text-base text-[#0b1210] outline-none focus:border-forest dark:border-white/10 dark:bg-[#101d1a] dark:text-white" />
-//               {errors.name && <p className="mt-2 text-sm text-red-500">{errors.name}</p>}
-//             </div>
-
-//             <div>
-//               <label className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#4a5b55] dark:text-[#dfe9e4]">Email</label>
-//               <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full rounded-2xl border border-black/5 bg-[#f7f7f2] px-4 py-3 text-base text-[#0b1210] outline-none focus:border-forest dark:border-white/10 dark:bg-[#101d1a] dark:text-white" />
-//               {errors.email && <p className="mt-2 text-sm text-red-500">{errors.email}</p>}
-//             </div>
-
-//             <div>
-//               <label className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#4a5b55] dark:text-[#dfe9e4]">Company</label>
-//               <input value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} className="w-full rounded-2xl border border-black/5 bg-[#f7f7f2] px-4 py-3 text-base text-[#0b1210] outline-none focus:border-forest dark:border-white/10 dark:bg-[#101d1a] dark:text-white" />
-//             </div>
-
-//             <div>
-//               <label className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#4a5b55] dark:text-[#dfe9e4]">Phone</label>
-//               <input value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full rounded-2xl border border-black/5 bg-[#f7f7f2] px-4 py-3 text-base text-[#0b1210] outline-none focus:border-forest dark:border-white/10 dark:bg-[#101d1a] dark:text-white" />
-//             </div>
-
-//             <div className="md:col-span-2">
-//               <label className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#4a5b55] dark:text-[#dfe9e4]">Message</label>
-//               <textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} rows="5" className="w-full rounded-2xl border border-black/5 bg-[#f7f7f2] px-4 py-3 text-base text-[#0b1210] outline-none focus:border-forest dark:border-white/10 dark:bg-[#101d1a] dark:text-white" />
-//               {errors.message && <p className="mt-2 text-sm text-red-500">{errors.message}</p>}
-//             </div>
-
-//             <div className="md:col-span-2">
-//               <button type="submit" className="inline-flex items-center justify-center rounded-full bg-forest px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-1 hover:shadow-soft">
-//                 Send Inquiry
-//               </button>
-//               {submitted && <p className="mt-4 text-sm text-emerald-600 dark:text-emerald-300">Inquiry sent successfully. We will be in touch soon.</p>}
-//             </div>
-//           </form>
-//         </div>
-//       </main>
-//     </>
-//   )
-// }
-
-
-
-
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -98,13 +6,102 @@ import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
+  FaWhatsapp,
 } from 'react-icons/fa'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function Contact() {
+  usePageMeta(
+    'Tejays Agri | Contact',
+    'Contact Tejays Agri to discuss future dairy, nutrition, technology and sustainability opportunities.'
+  )
+
   const [submitted, setSubmitted] = useState(false)
+
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    interest: '',
+    message: '',
+  })
+
+  const [errors, setErrors] = useState({})
+
+  const updateField = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }))
+
+    setErrors((prev) => ({
+      ...prev,
+      [field]: '',
+    }))
+  }
+
+  const validate = () => {
+    const nextErrors = {}
+
+    if (!formData.name.trim()) {
+      nextErrors.name = 'Full name is required.'
+    }
+
+    if (!formData.email.trim()) {
+      nextErrors.email = 'Email address is required.'
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      nextErrors.email = 'Please enter a valid email address.'
+    }
+
+    if (!formData.interest) {
+      nextErrors.interest = 'Please select an area of interest.'
+    }
+
+    if (!formData.message.trim()) {
+      nextErrors.message = 'Message is required.'
+    }
+
+    return nextErrors
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    const nextErrors = validate()
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors)
+      setSubmitted(false)
+      return
+    }
+
+    const whatsappNumber = '919509612559'
+
+    const whatsappMessage = `
+🔔 NEW ENQUIRY — TEJAYS AGRI WEBSITE
+
+Name: ${formData.name.trim()}
+Company: ${formData.company.trim() || 'Not provided'}
+Email: ${formData.email.trim()}
+Phone: ${formData.phone.trim() || 'Not provided'}
+Area of Interest: ${formData.interest}
+
+Message:
+${formData.message.trim()}
+
+━━━━━━━━━━━━━━━━━━
+TEJAYS AGRI
+GROWING FOR THE FUTURE
+━━━━━━━━━━━━━━━━━━
+    `.trim()
+
+    const whatsappUrl =
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
+
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+
+    setErrors({})
     setSubmitted(true)
   }
 
@@ -117,59 +114,46 @@ export default function Contact() {
 
       <section className="relative overflow-hidden bg-[#075B3A] px-6 pb-14 pt-24 text-white sm:px-8 sm:pb-16 sm:pt-28 lg:px-12 lg:pb-20 lg:pt-32">
 
-        {/* =====================================================
-      BACKGROUND DETAILS
-  ===================================================== */}
-
+        {/* Background */}
         <div className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full bg-[#72B943]/20 blur-[120px]" />
 
         <div className="pointer-events-none absolute -bottom-40 -left-32 h-[380px] w-[380px] rounded-full bg-black/20 blur-[110px]" />
 
         <div
           className="
-      pointer-events-none
-      absolute inset-0
-      opacity-[0.07]
-      [background-image:linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)]
-      [background-size:70px_70px]
-    "
+            pointer-events-none
+            absolute inset-0
+            opacity-[0.07]
+            [background-image:linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)]
+            [background-size:70px_70px]
+          "
         />
 
-
-        {/* =====================================================
-      CONTENT
-  ===================================================== */}
-
+        {/* Content */}
         <div className="relative mx-auto max-w-[1400px]">
 
           <div className="grid items-end gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
 
-            {/* =================================================
-          LEFT
-      ================================================= */}
-
+            {/* LEFT */}
             <div data-aos="fade-up">
 
               <div className="mb-6 flex items-center gap-3">
-
                 <span className="h-px w-10 bg-[#72B943]" />
 
                 <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-[#72B943]">
                   CONTACT TEJAYS AGRI
                 </span>
-
               </div>
-
 
               <h1
                 className="
-            max-w-[900px]
-            text-[clamp(3rem,7vw,7rem)]
-            font-extrabold
-            uppercase
-            leading-[0.86]
-            tracking-[-0.065em]
-          "
+                  max-w-[900px]
+                  text-[clamp(3rem,7vw,7rem)]
+                  font-extrabold
+                  uppercase
+                  leading-[0.86]
+                  tracking-[-0.065em]
+                "
               >
                 LET'S BUILD
                 <span className="block text-[#72B943]">
@@ -179,11 +163,7 @@ export default function Contact() {
 
             </div>
 
-
-            {/* =================================================
-          RIGHT
-      ================================================= */}
-
+            {/* RIGHT */}
             <div
               data-aos="fade-left"
               className="max-w-[470px] lg:justify-self-end"
@@ -198,9 +178,6 @@ export default function Contact() {
                 </p>
 
               </div>
-
-
-              {/* Small ecosystem label */}
 
               <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2">
 
@@ -232,11 +209,7 @@ export default function Contact() {
 
           </div>
 
-
-          {/* =====================================================
-        BOTTOM LINE
-    ===================================================== */}
-
+          {/* Bottom line */}
           <div
             data-aos="fade-up"
             data-aos-delay="180"
@@ -254,7 +227,6 @@ export default function Contact() {
           </div>
 
         </div>
-
       </section>
 
 
@@ -302,6 +274,8 @@ export default function Contact() {
 
             <div className="mt-10 space-y-4">
 
+              {/* EMAIL */}
+
               <a
                 href="mailto:info@tejaysagri.com"
                 className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#72B943]/60 hover:bg-white/[0.08]"
@@ -312,6 +286,7 @@ export default function Contact() {
                 </span>
 
                 <div>
+
                   <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-white/35">
                     EMAIL
                   </p>
@@ -319,29 +294,67 @@ export default function Contact() {
                   <p className="mt-1 text-xs font-semibold text-white/80 group-hover:text-white">
                     info@tejaysagri.com
                   </p>
+
                 </div>
 
               </a>
 
 
-              <div className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:border-[#72B943]/60 hover:bg-white/[0.08]">
+              {/* PHONE */}
+
+              <a
+                href="tel:+919509612559"
+                className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#72B943]/60 hover:bg-white/[0.08]"
+              >
 
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#72B943] text-[#06120D]">
                   <FaPhone className="text-xs" />
                 </span>
 
                 <div>
+
                   <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-white/35">
                     PHONE
                   </p>
 
-                  <p className="mt-1 text-xs font-semibold text-white/80">
-                    Available through our team
+                  <p className="mt-1 text-xs font-semibold text-white/80 group-hover:text-white">
+                    +91 9509612559
                   </p>
+
                 </div>
 
-              </div>
+              </a>
 
+
+              {/* WHATSAPP */}
+
+              <a
+                href="https://wa.me/919509612559"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#72B943]/60 hover:bg-white/[0.08]"
+              >
+
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#72B943] text-[#06120D]">
+                  <FaWhatsapp className="text-sm" />
+                </span>
+
+                <div>
+
+                  <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-white/35">
+                    WHATSAPP
+                  </p>
+
+                  <p className="mt-1 text-xs font-semibold text-white/80 group-hover:text-white">
+                    Chat with TEJAYS AGRI
+                  </p>
+
+                </div>
+
+              </a>
+
+
+              {/* LOCATION */}
 
               <div className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:border-[#72B943]/60 hover:bg-white/[0.08]">
 
@@ -350,6 +363,7 @@ export default function Contact() {
                 </span>
 
                 <div>
+
                   <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-white/35">
                     LOCATION
                   </p>
@@ -357,6 +371,7 @@ export default function Contact() {
                   <p className="mt-1 text-xs font-semibold text-white/80">
                     India
                   </p>
+
                 </div>
 
               </div>
@@ -392,7 +407,9 @@ export default function Contact() {
 
             {submitted ? (
 
-              /* SUCCESS STATE */
+              /* =================================================
+                 SUCCESS STATE
+              ================================================= */
 
               <div className="flex min-h-[520px] flex-col items-center justify-center text-center">
 
@@ -401,7 +418,7 @@ export default function Contact() {
                 </div>
 
                 <span className="mt-7 text-[9px] font-bold uppercase tracking-[0.25em] text-[#075B3A] dark:text-[#72B943]">
-                  MESSAGE RECEIVED
+                  WHATSAPP INQUIRY READY
                 </span>
 
                 <h2 className="mt-4 text-3xl font-bold uppercase tracking-[-0.04em] sm:text-4xl">
@@ -409,13 +426,40 @@ export default function Contact() {
                 </h2>
 
                 <p className="mt-4 max-w-[430px] text-sm leading-6 text-[#64716B] dark:text-white/50">
-                  Your message has been captured. Our team will
-                  review your enquiry and connect with you.
+                  Your enquiry has been prepared in WhatsApp.
+                  Please tap Send in WhatsApp to deliver it to the
+                  TEJAYS AGRI team.
                 </p>
 
+
+                {/* WhatsApp button */}
+
+                <a
+                  href="https://wa.me/919509612559"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#075B3A] px-6 py-3 text-[9px] font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#064C31] dark:bg-[#72B943] dark:text-[#06120D]"
+                >
+                  <FaWhatsapp className="text-sm" />
+                  OPEN WHATSAPP
+                  <FaArrowRight className="text-[8px]" />
+                </a>
+
+
                 <button
-                  onClick={() => setSubmitted(false)}
-                  className="mt-8 inline-flex items-center gap-3 rounded-full border border-[#075B3A] px-6 py-3 text-[9px] font-bold uppercase tracking-[0.18em] text-[#075B3A] transition-all duration-300 hover:bg-[#075B3A] hover:text-white dark:border-[#72B943] dark:text-[#72B943] dark:hover:bg-[#72B943] dark:hover:text-[#06120D]"
+                  type="button"
+                  onClick={() => {
+                    setSubmitted(false)
+                    setFormData({
+                      name: '',
+                      company: '',
+                      email: '',
+                      phone: '',
+                      interest: '',
+                      message: '',
+                    })
+                  }}
+                  className="mt-5 inline-flex items-center gap-3 rounded-full border border-[#075B3A] px-6 py-3 text-[9px] font-bold uppercase tracking-[0.18em] text-[#075B3A] transition-all duration-300 hover:bg-[#075B3A] hover:text-white dark:border-[#72B943] dark:text-[#72B943] dark:hover:bg-[#72B943] dark:hover:text-[#06120D]"
                 >
                   SEND ANOTHER MESSAGE
                   <FaArrowRight className="text-[8px]" />
@@ -425,7 +469,7 @@ export default function Contact() {
 
             ) : (
 
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} noValidate>
 
                 {/* Form heading */}
 
@@ -454,7 +498,7 @@ export default function Contact() {
 
                 <div className="grid gap-6 sm:grid-cols-2">
 
-                  {/* Name */}
+                  {/* NAME */}
 
                   <div className="group">
 
@@ -465,14 +509,24 @@ export default function Contact() {
                     <input
                       required
                       type="text"
+                      value={formData.name}
+                      onChange={(e) =>
+                        updateField('name', e.target.value)
+                      }
                       placeholder="Your name"
                       className="w-full border-b border-black/15 bg-transparent px-0 py-3 text-sm outline-none transition-all duration-300 placeholder:text-black/25 focus:border-[#72B943] dark:border-white/15 dark:placeholder:text-white/20 dark:focus:border-[#72B943]"
                     />
 
+                    {errors.name && (
+                      <p className="mt-2 text-[9px] text-red-500">
+                        {errors.name}
+                      </p>
+                    )}
+
                   </div>
 
 
-                  {/* Company */}
+                  {/* COMPANY */}
 
                   <div className="group">
 
@@ -482,6 +536,10 @@ export default function Contact() {
 
                     <input
                       type="text"
+                      value={formData.company}
+                      onChange={(e) =>
+                        updateField('company', e.target.value)
+                      }
                       placeholder="Company name"
                       className="w-full border-b border-black/15 bg-transparent px-0 py-3 text-sm outline-none transition-all duration-300 placeholder:text-black/25 focus:border-[#72B943] dark:border-white/15 dark:placeholder:text-white/20 dark:focus:border-[#72B943]"
                     />
@@ -489,7 +547,7 @@ export default function Contact() {
                   </div>
 
 
-                  {/* Email */}
+                  {/* EMAIL */}
 
                   <div className="group">
 
@@ -500,14 +558,24 @@ export default function Contact() {
                     <input
                       required
                       type="email"
+                      value={formData.email}
+                      onChange={(e) =>
+                        updateField('email', e.target.value)
+                      }
                       placeholder="you@company.com"
                       className="w-full border-b border-black/15 bg-transparent px-0 py-3 text-sm outline-none transition-all duration-300 placeholder:text-black/25 focus:border-[#72B943] dark:border-white/15 dark:placeholder:text-white/20 dark:focus:border-[#72B943]"
                     />
 
+                    {errors.email && (
+                      <p className="mt-2 text-[9px] text-red-500">
+                        {errors.email}
+                      </p>
+                    )}
+
                   </div>
 
 
-                  {/* Phone */}
+                  {/* PHONE */}
 
                   <div className="group">
 
@@ -517,6 +585,10 @@ export default function Contact() {
 
                     <input
                       type="tel"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        updateField('phone', e.target.value)
+                      }
                       placeholder="+91"
                       className="w-full border-b border-black/15 bg-transparent px-0 py-3 text-sm outline-none transition-all duration-300 placeholder:text-black/25 focus:border-[#72B943] dark:border-white/15 dark:placeholder:text-white/20 dark:focus:border-[#72B943]"
                     />
@@ -524,7 +596,7 @@ export default function Contact() {
                   </div>
 
 
-                  {/* Interest */}
+                  {/* INTEREST */}
 
                   <div className="group sm:col-span-2">
 
@@ -534,39 +606,57 @@ export default function Contact() {
 
                     <select
                       required
-                      defaultValue=""
+                      value={formData.interest}
+                      onChange={(e) =>
+                        updateField('interest', e.target.value)
+                      }
                       className="w-full border-b border-black/15 bg-transparent px-0 py-3 text-sm outline-none transition-all duration-300 focus:border-[#72B943] dark:border-white/15 dark:bg-[#101815] dark:focus:border-[#72B943]"
                     >
+
                       <option value="" disabled>
                         Select an area
                       </option>
-                      <option value="dairy">
+
+                      <option value="Smart Dairy">
                         Smart Dairy
                       </option>
-                      <option value="technology">
+
+                      <option value="Technology & AI">
                         Technology & AI
                       </option>
-                      <option value="processing">
+
+                      <option value="Processing & Dairy Products">
                         Processing & Dairy Products
                       </option>
-                      <option value="nutrition">
+
+                      <option value="Nutrition & Whey">
                         Nutrition & Whey
                       </option>
-                      <option value="agriculture">
+
+                      <option value="Precision Agriculture">
                         Precision Agriculture
                       </option>
-                      <option value="partnership">
+
+                      <option value="Partnership / Business">
                         Partnership / Business
                       </option>
-                      <option value="other">
+
+                      <option value="Other">
                         Other
                       </option>
+
                     </select>
+
+                    {errors.interest && (
+                      <p className="mt-2 text-[9px] text-red-500">
+                        {errors.interest}
+                      </p>
+                    )}
 
                   </div>
 
 
-                  {/* Message */}
+                  {/* MESSAGE */}
 
                   <div className="group sm:col-span-2">
 
@@ -577,9 +667,19 @@ export default function Contact() {
                     <textarea
                       required
                       rows="5"
+                      value={formData.message}
+                      onChange={(e) =>
+                        updateField('message', e.target.value)
+                      }
                       placeholder="Tell us a little about your requirement..."
                       className="w-full resize-none border-b border-black/15 bg-transparent px-0 py-3 text-sm leading-6 outline-none transition-all duration-300 placeholder:text-black/25 focus:border-[#72B943] dark:border-white/15 dark:placeholder:text-white/20 dark:focus:border-[#72B943]"
                     />
+
+                    {errors.message && (
+                      <p className="mt-2 text-[9px] text-red-500">
+                        {errors.message}
+                      </p>
+                    )}
 
                   </div>
 
@@ -594,7 +694,6 @@ export default function Contact() {
                     By submitting this form, you agree to be
                     contacted regarding your enquiry.
                   </p>
-
 
                   <button
                     type="submit"
