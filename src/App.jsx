@@ -1,10 +1,12 @@
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
+
 import Header from './components/Header'
 import Footer from './components/Footer'
 import BackToTop from './components/BackToTop'
+
 import Home from './pages/Home'
 import About from './pages/About'
 import SmartDairy from './pages/SmartDairy'
@@ -18,7 +20,21 @@ import Innovation from './pages/Innovation'
 import Business from './pages/Business'
 import Campus from './pages/Campus'
 import Contact from './pages/Contact'
+
 import { useTheme } from './hooks/useTheme'
+
+
+// Scroll to top whenever the page/route changes
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
+
 
 function AppShell() {
   const { theme, setTheme } = useTheme()
@@ -35,7 +51,12 @@ function AppShell() {
 
   return (
     <div className="min-h-screen bg-[#f7f7f2] text-[#0b1210] transition-colors duration-300 dark:bg-[#0b1210] dark:text-white">
+
       <Header theme={theme} setTheme={setTheme} />
+
+      {/* Every navigation click starts from the top */}
+      <ScrollToTop />
+
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -53,11 +74,14 @@ function AppShell() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+
       <Footer theme={theme} />
+
       <BackToTop />
     </div>
   )
 }
+
 
 export default function App() {
   return (
